@@ -3,102 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение на свадьбу</title>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <title>The Wedding Day</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #fcfaf8;
+            background-color: #f8f9f8; /* Светлый фон как на макете */
             font-family: 'Montserrat', sans-serif;
-            color: #4a4a4a;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .card {
-            background: white;
-            max-width: 500px;
-            width: 90%;
-            padding: 40px;
-            text-align: center;
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            padding: 60px 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-radius: 2px;
-            border: 1px solid #eee;
-            margin: 20px;
+            text-align: center;
+            box-sizing: border-box;
         }
 
-        .names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: #b89a87;
-            margin-bottom: 20px;
+        header {
+            margin-bottom: 40px;
         }
 
-        .photo-container {
-            width: 100%;
-            height: 350px;
-            margin: 30px 0;
-            overflow: hidden;
-            border-radius: 5px;
-        }
-
-        .photo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(20%);
-        }
-
-        .info {
-            line-height: 1.8;
-            letter-spacing: 1px;
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 8px;
             text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .date {
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 15px 0;
-            color: #333;
+            font-size: 28px;
+            margin: 0 0 20px 0;
         }
 
         .divider {
+            width: 150px;
             height: 1px;
-            width: 50px;
-            background: #b89a87;
-            margin: 20px auto;
+            background-color: #333;
+            margin: 0 auto 30px;
+        }
+
+        .names {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 36px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .main-photo {
+            width: 100%;
+            width: auto;
+            max-height: 300px;
+            margin-bottom: 30px;
+        }
+
+        .date-time {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            font-weight: 400;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 20px; letter-spacing: 4px; }
+            .names { font-size: 28px; }
+            .container { padding: 40px 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <div class="info">Приглашаем на свадьбу</div>
-        
-        <div class="names">Александр & Мария</div>
-
-        <div class="photo-container">
-            <img src="https://unsplash.com" alt="Наша фотография">
-        </div>
-
-        <div class="info">
-            Мы будем счастливы разделить с вами <br>
-            этот особенный день
-            
+    <div class="container">
+        <header>
+            <h1>The Wedding Day</h1>
             <div class="divider"></div>
-            
-            <div class="date">15 ИЮЛЯ 2026</div>
-            
-            16:00 — Сбор гостей<br>
-            17:00 — Церемония<br>
-            <br>
-            <strong>Ресторан "Версаль"</strong><br>
-            ул. Цветочная, 12
-        </div>
+            <div class="names">Артём и Виктория</div>
+        </header>
+
+        <main>
+            <img src="wedding.png" alt="Свадебное фото" class="main-photo">
+        </main>
+
+        <footer>
+            <div class="date-time">
+                16 мая, 2026 | 16:00
+            </div>
+        </footer>
     </div>
 
 </body>
