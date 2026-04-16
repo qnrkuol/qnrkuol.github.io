@@ -6,15 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding Day</title>
     <style>
-        @font-face {
-            font-family: HeaderFont;
-            src: url('MonteCarlo-Regular.ttf');
-        }
-
-        @font-face {
-            font-family: OtherFont;
-            src: url('Gilroy-Light_0.ttf');
-        }
+        @font-face { font-family: HeaderFont; src: url('MonteCarlo-Regular.ttf'); }
+        @font-face { font-family: OtherFont; src: url('Gilroy-Light_0.ttf'); }
 
         body {
             margin: 0;
@@ -25,6 +18,8 @@
             align-items: center;
             min-height: 100vh;
             font-family: "OtherFont";
+            overflow-x: hidden;
+            transition: background 0.5s;
         }
 
         .container {
@@ -35,20 +30,13 @@
             box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             box-sizing: border-box;
+            position: relative;
+            z-index: 1;
         }
 
-        .second-container {
-            margin-top: 30px;
-            height: auto;
-        }
+        .second-container { margin-top: 30px; height: auto; }
 
-        h1 {
-            font-family: "HeaderFont";
-            font-weight: 500;
-            letter-spacing: 7px;
-            font-size: 38px;
-            margin: 0 0 20px 0;
-        }
+        h1 { font-family: "HeaderFont"; font-weight: 500; letter-spacing: 7px; font-size: 38px; margin: 0 0 20px 0; }
 
         .divider {
             width: 150px;
@@ -59,11 +47,14 @@
             display: block;
         }
 
-        .names {
-            font-size: 28px;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-            font-weight: 300;
+        .names { font-size: 28px; margin-bottom: 40px; letter-spacing: 2px; font-weight: 300; }
+
+        .photo-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
         }
 
         .main-photo {
@@ -71,36 +62,31 @@
             height: auto;
             max-height: 300px;
             box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+            display: block;
+            margin: 0 auto;
         }
 
-        .date-time {
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 20px;
-            font-weight: 300;
+        .date-time { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-top: 20px; font-weight: 300; }
+
+        h2 { font-weight: 300; text-transform: uppercase; letter-spacing: 4px; font-size: 20px; margin: 40px 0 20px 0; }
+
+        p { line-height: 1.8; font-size: 16px; color: #555; margin-bottom: 0; }
+
+        #no-word {
+            cursor: pointer;
+            display: inline-block;
+            animation: bw-fade 2s ease-in-out infinite;
         }
 
-        h2 {
-            font-weight: 300;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 20px;
-            margin: 40px 0 20px 0;
-        }
-
-        p {
-            line-height: 1.8;
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 0;
+        @keyframes bw-fade {
+            0%, 100% { color: #000; }
+            50% { color: #ccc; }
         }
 
         .wave-link {
             text-decoration: none;
             color: inherit;
             display: inline-block;
-            position: relative;
             background: linear-gradient(90deg, #555, #ccc, #555);
             background-size: 200% 100%;
             -webkit-background-clip: text;
@@ -112,10 +98,93 @@
             0% { background-position: 200% 0; }
             100% { background-position: 0% 0; }
         }
+
+        /* --- РЕТРО РЕЖИМ (НУЛЕВЫЕ) --- */
+        .zeroes-mode {
+            background-image: url('star.png') !important;
+            background-color: #000 !important;
+            font-family: "Comic Sans MS", cursive !important;
+        }
+
+        .zeroes-mode .container {
+            background: #000080 !important;
+            border: 5px outset #ff00ff !important;
+            box-shadow: 10px 10px 0px #00ffff !important;
+            color: #fff !important;
+        }
+
+        .zeroes-mode h1, .zeroes-mode .names, .zeroes-mode h2, .zeroes-mode p, .zeroes-mode .date-time {
+            color: #ffff00 !important;
+            text-shadow: 2px 2px #ff0000;
+            letter-spacing: 0 !important;
+        }
+
+        .zeroes-mode .divider { border-bottom: 5px dotted #00ff00 !important; width: 100% !important; }
+
+        /* Вращение картинки */
+        .zeroes-mode .main-photo {
+            border: 5px solid #fff;
+            animation: spin-burst 7s linear infinite;
+        }
+
+        @keyframes spin-burst {
+            0% { transform: rotate(0deg); }
+            80% { transform: rotate(0deg); } /* 80% времени стоит на месте */
+            100% { transform: rotate(1440deg); } /* За оставшиеся 20% времени делает 4 оборота (360 * 4) */
+        }
+
+        .zeroes-mode #no-word {
+            animation: crazy-blink 0.15s infinite;
+            font-size: 1.4em;
+        }
+
+        @keyframes crazy-blink {
+            0% { color: red; transform: scale(1.1); }
+            50% { color: lime; transform: scale(0.9); }
+            100% { color: blue; transform: scale(1.1); }
+        }
+
+        .growth-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, #ff00ff 0%, #ffff00 50%, #00ffff 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            pointer-events: none;
+            transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67), height 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .growth-active { width: 300vmax; height: 300vmax; }
+
+        marquee { display: none; color: white; font-weight: bold; font-size: 24px; position: fixed; top: 0; width: 100%; z-index: 10; }
+        .zeroes-mode marquee { display: block; }
+
+        .fly-icon { position: fixed; pointer-events: none; z-index: 1000; display: none; width: 50px; }
+        .zeroes-mode .fly-icon { display: block; }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(100px, 100px); }
+            100% { transform: translate(0, 0); }
+        }
     </style>
 </head>
 
 <body>
+    <div id="overlay" class="growth-overlay"></div>
+    <marquee>+++ ГОРЬКО! +++ ЛУЧШАЯ СВАДЬБА ГОДА +++ ТАНЦЫ ДО ПАДЕНИЯ +++</marquee>
+
+    <audio id="midi-music" loop>
+        <source src="White Wedding.mp3" type="audio/mpeg">
+    </audio>
+
+    <img src="star.png" class="fly-icon" style="top:15%; left:5%; animation: float 5s infinite ease-in-out;">
+    <img src="star.png" class="fly-icon" style="bottom:10%; right:10%; animation: float 7s infinite linear reverse;">
+
     <div class="container">
         <header>
             <h1>The Wedding Day</h1>
@@ -124,13 +193,13 @@
         </header>
 
         <main>
-            <img src="wedding.png" alt="Наше фото" class="main-photo">
+            <div class="photo-wrapper">
+                <img src="wedding.png" alt="Наше фото" class="main-photo" id="main-photo">
+            </div>
         </main>
 
         <footer>
-            <div class="date-time">
-                16 мая, 2026 | 16:00
-            </div>
+            <div class="date-time">16 мая, 2026 | 16:00</div>
         </footer>
     </div>
 
@@ -138,7 +207,7 @@
         <h2 style="margin-top: 0;">Место проведения</h2>
         <div class="divider"></div>
         <p>
-           <a href="https://yandex.ru/maps/org/usadba_vorontsovo/1768358696/?ll=37.544897%2C55.653808&z=11.94" class="wave-link" target="_blank" rel="noopener noreferrer">тер. Воронцовский Парк, 3, Москва</a> 
+           <a href="https://yandex.ru/maps/org/usadba_vorontsovo/1768358696/?ll=37.544897%2C55.653808&z=11" class="wave-link" target="_blank" rel="noopener noreferrer">тер. Воронцовский Парк, 3, Москва</a> 
         </p>
 
         <h2>Программа дня</h2>
@@ -153,10 +222,28 @@
 
         <h2>Ответы на вопросы</h2>
         <div class="divider"></div>
-        <p>
-            Есть ли виш-лист? — <b>Нет</b>
-        </p>
+        <p>Есть ли виш-лист? — <b id="no-word">Нет</b></p>
     </div>
-</body>
 
+    <script>
+        const noWord = document.getElementById('no-word');
+        const overlay = document.getElementById('overlay');
+        const music = document.getElementById('midi-music');
+        
+        noWord.addEventListener('click', () => {
+            overlay.classList.add('growth-active');
+            
+            setTimeout(() => {
+                const isZeroes = document.body.classList.toggle('zeroes-mode');
+                overlay.classList.remove('growth-active');
+                
+                if (isZeroes) {
+                    music.play();
+                } else {
+                    music.pause();
+                }
+            }, 800);
+        });
+    </script>
+</body>
 </html>
