@@ -1,65 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wedding Day</title>
     <style>
+        @font-face {
+            font-family: HeaderFont;
+            src: url('MonteCarlo-Regular.ttf');
+        }
+
+        @font-face {
+            font-family: OtherFont;
+            src: url('Gilroy-Light_0.ttf');
+        }
+
         body {
             margin: 0;
-            padding: 0;
-            background-color: #f8f9f8; /* Светлый фон как на макете */
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
+            padding: 40px 0;
+            background-color: #f8f9f8;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            font-family: "OtherFont";
         }
 
         .container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 900px;
-            padding: 60px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 600px;
+            padding: 30px 20px;
+            box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
             text-align: center;
             box-sizing: border-box;
         }
 
-        header {
-            margin-bottom: 40px;
+        .second-container {
+            margin-top: 30px;
+            height: auto;
         }
 
         h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 300;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            font-size: 28px;
+            font-family: "HeaderFont";
+            font-weight: 500;
+            letter-spacing: 7px;
+            font-size: 38px;
             margin: 0 0 20px 0;
         }
 
         .divider {
             width: 150px;
-            height: 1px;
-            background-color: #333;
-            margin: 0 auto 30px;
+            height: 0;
+            border: none;
+            border-bottom: 1px solid #333;
+            margin: 0 auto 20px;
+            display: block;
         }
 
         .names {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 36px;
-            color: #555;
+            font-size: 28px;
             margin-bottom: 40px;
+            letter-spacing: 2px;
+            font-weight: 300;
         }
 
         .main-photo {
-            width: 100%;
-            width: auto;
+            max-width: 100%;
+            height: auto;
             max-height: 300px;
-            margin-bottom: 30px;
+            box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
         }
 
         .date-time {
@@ -67,18 +78,44 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 20px;
-            font-weight: 400;
+            font-weight: 300;
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 20px; letter-spacing: 4px; }
-            .names { font-size: 28px; }
-            .container { padding: 40px 15px; }
+        h2 {
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 20px;
+            margin: 40px 0 20px 0;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        .wave-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(90deg, #555, #ccc, #555);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: wave 10s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { background-position: 200% 0; }
+            100% { background-position: 0% 0; }
         }
     </style>
 </head>
-<body>
 
+<body>
     <div class="container">
         <header>
             <h1>The Wedding Day</h1>
@@ -87,7 +124,7 @@
         </header>
 
         <main>
-            <img src="wedding.png" alt="Свадебное фото" class="main-photo">
+            <img src="wedding.png" alt="Наше фото" class="main-photo">
         </main>
 
         <footer>
@@ -97,5 +134,29 @@
         </footer>
     </div>
 
+    <div class="container second-container">
+        <h2 style="margin-top: 0;">Место проведения</h2>
+        <div class="divider"></div>
+        <p>
+           <a href="https://yandex.ru/maps/org/usadba_vorontsovo/1768358696/?ll=37.544897%2C55.653808&z=11.94" class="wave-link" target="_blank" rel="noopener noreferrer">тер. Воронцовский Парк, 3, Москва</a> 
+        </p>
+
+        <h2>Программа дня</h2>
+        <div class="divider"></div>
+        <p>
+            15:45 — Сбор гостей<br>
+            16:00 — Церемония<br>
+            16:20 — Конец церемонии<br>
+            16:25 — Трансфер в ресторан<br>
+            18:00 — Ужин и танцы
+        </p>
+
+        <h2>Ответы на вопросы</h2>
+        <div class="divider"></div>
+        <p>
+            Есть ли виш-лист? — <b>Нет</b>
+        </p>
+    </div>
 </body>
+
 </html>
